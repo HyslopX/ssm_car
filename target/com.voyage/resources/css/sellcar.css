@@ -1,0 +1,59 @@
+.link{text-align: right;line-height: 20px;padding-right: 40px;}
+
+.ui-dialog{
+    width: 680px;height: auto;display: none;
+    position: absolute;z-index: 9000;
+    top: 0px;left: 0px;
+    border: 1px solid #D5D5D5;background: #fff;
+}
+
+.ui-dialog a{text-decoration: none;}
+
+.ui-dialog-title{
+    height: 20px;line-height: 48px; padding:0px 20px;color: #535353;font-size: 16px;
+    border-bottom: 1px solid #efefef;background: #f5f5f5;
+    cursor: move;
+    user-select:none;
+}
+.ui-dialog-closebutton{
+    width: 16px;height: 16px;display: block;
+    position: absolute;top: 12px;right: 20px;
+    background: url(/resources/img/close_def.png) no-repeat;cursor: pointer;
+
+}
+.ui-dialog-closebutton:hover{background:url(/resources/img/close_hov.png);}
+
+.ui-dialog-content{
+    padding: 15px 20px;
+}
+.ui-dialog-pt15{
+    padding-top: 15px;
+}
+.ui-dialog-l40{
+    height: 40px;line-height: 40px;
+    text-align: right;
+}
+
+.ui-dialog-input{
+    width: 100%;height: 40px;
+    margin: 0px;padding:0px;
+    border: 1px solid #d5d5d5;
+    font-size: 16px;color: #c1c1c1;
+    text-indent: 25px;
+    outline: none;
+}
+
+.ui-dialog-submit{
+    width: 100%;height: 50px;background: #3b7ae3;border:none;font-size: 16px;color: #fff;
+    outline: none;text-decoration: none;
+    display: block;text-align: center;line-height: 50px;
+}
+.ui-dialog-submit:hover{
+    background: #3f81b0;
+}
+
+.ui-mask{
+    width: 100%;height:100%;background: #000;
+    position: absolute;top: 0px;height: 0px;z-index: 8000;
+    opacity:0.4; filter: Alpha(opacity=40);
+}

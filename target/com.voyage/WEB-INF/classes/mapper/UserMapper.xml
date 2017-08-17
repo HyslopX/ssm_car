@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sailing.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.sailing.entity.User">
+    <id column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="upassword" jdbcType="VARCHAR" property="upassword" />
+    <result column="uname" jdbcType="VARCHAR" property="uname" />
+    <result column="uage" jdbcType="INTEGER" property="uage" />
+    <result column="usex" jdbcType="VARCHAR" property="usex" />
+    <result column="uemail" jdbcType="VARCHAR" property="uemail" />
+    <result column="uphone" jdbcType="VARCHAR" property="uphone" />
+    <result column="uregistertime" jdbcType="TIMESTAMP" property="uregistertime" />
+    <result column="ustatus" jdbcType="TINYINT" property="ustatus" />
+    <result column="uvalidatecode" jdbcType="VARCHAR" property="uvalidatecode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    `uid`, username, upassword, uname, uage, usex, uemail, uphone, uregistertime, ustatus, 
+    uvalidatecode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where `uid` = #{uid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where `username` = #{uname,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByUemail" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where `uemail` = #{uemail,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where `uid` = #{uid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sailing.entity.User">
+    insert into user (`uid`, username, upassword, 
+      uname, uage, usex, 
+      uemail, uphone, uregistertime, 
+      ustatus, uvalidatecode)
+    values (#{uid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{upassword,jdbcType=VARCHAR}, 
+      #{uname,jdbcType=VARCHAR}, #{uage,jdbcType=INTEGER}, #{usex,jdbcType=VARCHAR}, 
+      #{uemail,jdbcType=VARCHAR}, #{uphone,jdbcType=VARCHAR}, #{uregistertime,jdbcType=TIMESTAMP}, 
+      #{ustatus,jdbcType=TINYINT}, #{uvalidatecode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sailing.entity.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        `uid`,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="upassword != null">
+        upassword,
+      </if>
+      <if test="uname != null">
+        uname,
+      </if>
+      <if test="uage != null">
+        uage,
+      </if>
+      <if test="usex != null">
+        usex,
+      </if>
+      <if test="uemail != null">
+        uemail,
+      </if>
+      <if test="uphone != null">
+        uphone,
+      </if>
+      <if test="uregistertime != null">
+        uregistertime,
+      </if>
+      <if test="ustatus != null">
+        ustatus,
+      </if>
+      <if test="uvalidatecode != null">
+        uvalidatecode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="upassword != null">
+        #{upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null">
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="uage != null">
+        #{uage,jdbcType=INTEGER},
+      </if>
+      <if test="usex != null">
+        #{usex,jdbcType=VARCHAR},
+      </if>
+      <if test="uemail != null">
+        #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="uphone != null">
+        #{uphone,jdbcType=VARCHAR},
+      </if>
+      <if test="uregistertime != null">
+        #{uregistertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ustatus != null">
+        #{ustatus,jdbcType=TINYINT},
+      </if>
+      <if test="uvalidatecode != null">
+        #{uvalidatecode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sailing.entity.User">
+    update user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="upassword != null">
+        upassword = #{upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null">
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="uage != null">
+        uage = #{uage,jdbcType=INTEGER},
+      </if>
+      <if test="usex != null">
+        usex = #{usex,jdbcType=VARCHAR},
+      </if>
+      <if test="uemail != null">
+        uemail = #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="uphone != null">
+        uphone = #{uphone,jdbcType=VARCHAR},
+      </if>
+      <if test="uregistertime != null">
+        uregistertime = #{uregistertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ustatus != null">
+        ustatus = #{ustatus,jdbcType=TINYINT},
+      </if>
+      <if test="uvalidatecode != null">
+        uvalidatecode = #{uvalidatecode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where `uid` = #{uid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sailing.entity.User">
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      upassword = #{upassword,jdbcType=VARCHAR},
+      uname = #{uname,jdbcType=VARCHAR},
+      uage = #{uage,jdbcType=INTEGER},
+      usex = #{usex,jdbcType=VARCHAR},
+      uemail = #{uemail,jdbcType=VARCHAR},
+      uphone = #{uphone,jdbcType=VARCHAR},
+      uregistertime = #{uregistertime,jdbcType=TIMESTAMP},
+      ustatus = #{ustatus,jdbcType=TINYINT},
+      uvalidatecode = #{uvalidatecode,jdbcType=VARCHAR}
+    where `uid` = #{uid,jdbcType=VARCHAR}
+  </update>
+</mapper>

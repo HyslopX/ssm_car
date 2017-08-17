@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sailing.dao.CarChassisBrakeInfoMapper">
+  <resultMap id="BaseResultMap" type="com.sailing.entity.CarChassisBrakeInfo">
+    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="drive_mode" jdbcType="VARCHAR" property="driveMode" />
+    <result column="auto_power_type" jdbcType="VARCHAR" property="autoPowerType" />
+    <result column="front_suspension_type" jdbcType="VARCHAR" property="frontSuspensionType" />
+    <result column="rear_suspension_type" jdbcType="VARCHAR" property="rearSuspensionType" />
+    <result column="front_brake_type" jdbcType="VARCHAR" property="frontBrakeType" />
+    <result column="rear_brake_type" jdbcType="VARCHAR" property="rearBrakeType" />
+    <result column="parking_brake_type" jdbcType="VARCHAR" property="parkingBrakeType" />
+    <result column="front_wheel_size" jdbcType="VARCHAR" property="frontWheelSize" />
+    <result column="rear_wheel_size" jdbcType="VARCHAR" property="rearWheelSize" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    car_id, drive_mode, auto_power_type, front_suspension_type, rear_suspension_type, 
+    front_brake_type, rear_brake_type, parking_brake_type, front_wheel_size, rear_wheel_size
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_chassis_brake_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from car_chassis_brake_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sailing.entity.CarChassisBrakeInfo">
+    insert into car_chassis_brake_info (car_id, drive_mode, auto_power_type, 
+      front_suspension_type, rear_suspension_type, 
+      front_brake_type, rear_brake_type, parking_brake_type, 
+      front_wheel_size, rear_wheel_size)
+    values (#{carId,jdbcType=VARCHAR}, #{driveMode,jdbcType=VARCHAR}, #{autoPowerType,jdbcType=VARCHAR}, 
+      #{frontSuspensionType,jdbcType=VARCHAR}, #{rearSuspensionType,jdbcType=VARCHAR}, 
+      #{frontBrakeType,jdbcType=VARCHAR}, #{rearBrakeType,jdbcType=VARCHAR}, #{parkingBrakeType,jdbcType=VARCHAR}, 
+      #{frontWheelSize,jdbcType=VARCHAR}, #{rearWheelSize,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sailing.entity.CarChassisBrakeInfo">
+    insert into car_chassis_brake_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="driveMode != null">
+        drive_mode,
+      </if>
+      <if test="autoPowerType != null">
+        auto_power_type,
+      </if>
+      <if test="frontSuspensionType != null">
+        front_suspension_type,
+      </if>
+      <if test="rearSuspensionType != null">
+        rear_suspension_type,
+      </if>
+      <if test="frontBrakeType != null">
+        front_brake_type,
+      </if>
+      <if test="rearBrakeType != null">
+        rear_brake_type,
+      </if>
+      <if test="parkingBrakeType != null">
+        parking_brake_type,
+      </if>
+      <if test="frontWheelSize != null">
+        front_wheel_size,
+      </if>
+      <if test="rearWheelSize != null">
+        rear_wheel_size,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="driveMode != null">
+        #{driveMode,jdbcType=VARCHAR},
+      </if>
+      <if test="autoPowerType != null">
+        #{autoPowerType,jdbcType=VARCHAR},
+      </if>
+      <if test="frontSuspensionType != null">
+        #{frontSuspensionType,jdbcType=VARCHAR},
+      </if>
+      <if test="rearSuspensionType != null">
+        #{rearSuspensionType,jdbcType=VARCHAR},
+      </if>
+      <if test="frontBrakeType != null">
+        #{frontBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="rearBrakeType != null">
+        #{rearBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="parkingBrakeType != null">
+        #{parkingBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="frontWheelSize != null">
+        #{frontWheelSize,jdbcType=VARCHAR},
+      </if>
+      <if test="rearWheelSize != null">
+        #{rearWheelSize,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sailing.entity.CarChassisBrakeInfo">
+    update car_chassis_brake_info
+    <set>
+      <if test="driveMode != null">
+        drive_mode = #{driveMode,jdbcType=VARCHAR},
+      </if>
+      <if test="autoPowerType != null">
+        auto_power_type = #{autoPowerType,jdbcType=VARCHAR},
+      </if>
+      <if test="frontSuspensionType != null">
+        front_suspension_type = #{frontSuspensionType,jdbcType=VARCHAR},
+      </if>
+      <if test="rearSuspensionType != null">
+        rear_suspension_type = #{rearSuspensionType,jdbcType=VARCHAR},
+      </if>
+      <if test="frontBrakeType != null">
+        front_brake_type = #{frontBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="rearBrakeType != null">
+        rear_brake_type = #{rearBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="parkingBrakeType != null">
+        parking_brake_type = #{parkingBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="frontWheelSize != null">
+        front_wheel_size = #{frontWheelSize,jdbcType=VARCHAR},
+      </if>
+      <if test="rearWheelSize != null">
+        rear_wheel_size = #{rearWheelSize,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sailing.entity.CarChassisBrakeInfo">
+    update car_chassis_brake_info
+    set drive_mode = #{driveMode,jdbcType=VARCHAR},
+      auto_power_type = #{autoPowerType,jdbcType=VARCHAR},
+      front_suspension_type = #{frontSuspensionType,jdbcType=VARCHAR},
+      rear_suspension_type = #{rearSuspensionType,jdbcType=VARCHAR},
+      front_brake_type = #{frontBrakeType,jdbcType=VARCHAR},
+      rear_brake_type = #{rearBrakeType,jdbcType=VARCHAR},
+      parking_brake_type = #{parkingBrakeType,jdbcType=VARCHAR},
+      front_wheel_size = #{frontWheelSize,jdbcType=VARCHAR},
+      rear_wheel_size = #{rearWheelSize,jdbcType=VARCHAR}
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+</mapper>

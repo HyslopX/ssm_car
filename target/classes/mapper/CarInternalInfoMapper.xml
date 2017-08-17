@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sailing.dao.CarInternalInfoMapper">
+  <resultMap id="BaseResultMap" type="com.sailing.entity.CarInternalInfo">
+    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="mf_steering_wheel" jdbcType="VARCHAR" property="mfSteeringWheel" />
+    <result column="dlcc" jdbcType="VARCHAR" property="dlcc" />
+    <result column="automatic_air_con" jdbcType="VARCHAR" property="automaticAirCon" />
+    <result column="manual_air_con" jdbcType="VARCHAR" property="manualAirCon" />
+    <result column="gps" jdbcType="VARCHAR" property="gps" />
+    <result column="parking_redar" jdbcType="VARCHAR" property="parkingRedar" />
+    <result column="reverse_video" jdbcType="VARCHAR" property="reverseVideo" />
+    <result column="leather_seat" jdbcType="VARCHAR" property="leatherSeat" />
+    <result column="seat_heating" jdbcType="VARCHAR" property="seatHeating" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    car_id, mf_steering_wheel, dlcc, automatic_air_con, manual_air_con, gps, parking_redar, 
+    reverse_video, leather_seat, seat_heating
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_internal_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from car_internal_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sailing.entity.CarInternalInfo">
+    insert into car_internal_info (car_id, mf_steering_wheel, dlcc, 
+      automatic_air_con, manual_air_con, gps, 
+      parking_redar, reverse_video, leather_seat, 
+      seat_heating)
+    values (#{carId,jdbcType=VARCHAR}, #{mfSteeringWheel,jdbcType=VARCHAR}, #{dlcc,jdbcType=VARCHAR}, 
+      #{automaticAirCon,jdbcType=VARCHAR}, #{manualAirCon,jdbcType=VARCHAR}, #{gps,jdbcType=VARCHAR}, 
+      #{parkingRedar,jdbcType=VARCHAR}, #{reverseVideo,jdbcType=VARCHAR}, #{leatherSeat,jdbcType=VARCHAR}, 
+      #{seatHeating,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sailing.entity.CarInternalInfo">
+    insert into car_internal_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="mfSteeringWheel != null">
+        mf_steering_wheel,
+      </if>
+      <if test="dlcc != null">
+        dlcc,
+      </if>
+      <if test="automaticAirCon != null">
+        automatic_air_con,
+      </if>
+      <if test="manualAirCon != null">
+        manual_air_con,
+      </if>
+      <if test="gps != null">
+        gps,
+      </if>
+      <if test="parkingRedar != null">
+        parking_redar,
+      </if>
+      <if test="reverseVideo != null">
+        reverse_video,
+      </if>
+      <if test="leatherSeat != null">
+        leather_seat,
+      </if>
+      <if test="seatHeating != null">
+        seat_heating,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="mfSteeringWheel != null">
+        #{mfSteeringWheel,jdbcType=VARCHAR},
+      </if>
+      <if test="dlcc != null">
+        #{dlcc,jdbcType=VARCHAR},
+      </if>
+      <if test="automaticAirCon != null">
+        #{automaticAirCon,jdbcType=VARCHAR},
+      </if>
+      <if test="manualAirCon != null">
+        #{manualAirCon,jdbcType=VARCHAR},
+      </if>
+      <if test="gps != null">
+        #{gps,jdbcType=VARCHAR},
+      </if>
+      <if test="parkingRedar != null">
+        #{parkingRedar,jdbcType=VARCHAR},
+      </if>
+      <if test="reverseVideo != null">
+        #{reverseVideo,jdbcType=VARCHAR},
+      </if>
+      <if test="leatherSeat != null">
+        #{leatherSeat,jdbcType=VARCHAR},
+      </if>
+      <if test="seatHeating != null">
+        #{seatHeating,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sailing.entity.CarInternalInfo">
+    update car_internal_info
+    <set>
+      <if test="mfSteeringWheel != null">
+        mf_steering_wheel = #{mfSteeringWheel,jdbcType=VARCHAR},
+      </if>
+      <if test="dlcc != null">
+        dlcc = #{dlcc,jdbcType=VARCHAR},
+      </if>
+      <if test="automaticAirCon != null">
+        automatic_air_con = #{automaticAirCon,jdbcType=VARCHAR},
+      </if>
+      <if test="manualAirCon != null">
+        manual_air_con = #{manualAirCon,jdbcType=VARCHAR},
+      </if>
+      <if test="gps != null">
+        gps = #{gps,jdbcType=VARCHAR},
+      </if>
+      <if test="parkingRedar != null">
+        parking_redar = #{parkingRedar,jdbcType=VARCHAR},
+      </if>
+      <if test="reverseVideo != null">
+        reverse_video = #{reverseVideo,jdbcType=VARCHAR},
+      </if>
+      <if test="leatherSeat != null">
+        leather_seat = #{leatherSeat,jdbcType=VARCHAR},
+      </if>
+      <if test="seatHeating != null">
+        seat_heating = #{seatHeating,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sailing.entity.CarInternalInfo">
+    update car_internal_info
+    set mf_steering_wheel = #{mfSteeringWheel,jdbcType=VARCHAR},
+      dlcc = #{dlcc,jdbcType=VARCHAR},
+      automatic_air_con = #{automaticAirCon,jdbcType=VARCHAR},
+      manual_air_con = #{manualAirCon,jdbcType=VARCHAR},
+      gps = #{gps,jdbcType=VARCHAR},
+      parking_redar = #{parkingRedar,jdbcType=VARCHAR},
+      reverse_video = #{reverseVideo,jdbcType=VARCHAR},
+      leather_seat = #{leatherSeat,jdbcType=VARCHAR},
+      seat_heating = #{seatHeating,jdbcType=VARCHAR}
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+</mapper>

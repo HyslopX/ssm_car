@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sailing.dao.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.sailing.entity.Order">
+    <id column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="baseinfo" jdbcType="VARCHAR" property="baseinfo" />
+    <result column="car_price" jdbcType="DOUBLE" property="carPrice" />
+    <result column="deposit" jdbcType="DOUBLE" property="deposit" />
+    <result column="seller_id" jdbcType="VARCHAR" property="sellerId" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="buyer_id" jdbcType="VARCHAR" property="buyerId" />
+    <result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
+    <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id, car_id, baseinfo, car_price, deposit, seller_id, address, buyer_id, order_time, 
+    order_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByBid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from car_order
+    where buyer_id = #{buyerId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectBySid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from car_order
+    where seller_id = #{sellerId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from car_order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sailing.entity.Order">
+    insert into car_order (order_id, car_id, baseinfo, 
+      car_price, deposit, seller_id, 
+      address, buyer_id, order_time, 
+      order_status)
+    values (#{orderId,jdbcType=VARCHAR}, #{carId,jdbcType=VARCHAR}, #{baseinfo,jdbcType=VARCHAR}, 
+      #{carPrice,jdbcType=DOUBLE}, #{deposit,jdbcType=DOUBLE}, #{sellerId,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{buyerId,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP}, 
+      #{orderStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sailing.entity.Order">
+    insert into car_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="baseinfo != null">
+        baseinfo,
+      </if>
+      <if test="carPrice != null">
+        car_price,
+      </if>
+      <if test="deposit != null">
+        deposit,
+      </if>
+      <if test="sellerId != null">
+        seller_id,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="buyerId != null">
+        buyer_id,
+      </if>
+      <if test="orderTime != null">
+        order_time,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="baseinfo != null">
+        #{baseinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="carPrice != null">
+        #{carPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="deposit != null">
+        #{deposit,jdbcType=DOUBLE},
+      </if>
+      <if test="sellerId != null">
+        #{sellerId,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null">
+        #{buyerId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sailing.entity.Order">
+    update car_order
+    <set>
+      <if test="carId != null">
+        car_id = #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="baseinfo != null">
+        baseinfo = #{baseinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="carPrice != null">
+        car_price = #{carPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="deposit != null">
+        deposit = #{deposit,jdbcType=DOUBLE},
+      </if>
+      <if test="sellerId != null">
+        seller_id = #{sellerId,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null">
+        buyer_id = #{buyerId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sailing.entity.Order">
+    update car_order
+    set car_id = #{carId,jdbcType=VARCHAR},
+      baseinfo = #{baseinfo,jdbcType=VARCHAR},
+      car_price = #{carPrice,jdbcType=DOUBLE},
+      deposit = #{deposit,jdbcType=DOUBLE},
+      seller_id = #{sellerId,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=VARCHAR},
+      order_time = #{orderTime,jdbcType=TIMESTAMP},
+      order_status = #{orderStatus,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,585 @@
+/**
+ * 47admin - Admin Bootstrap Skin
+ * 
+ * Author: @geedmo
+ * Website: http://geedmo.com
+ * License: Codecanyon Regular License
+ */
+/* ========================================================================
+   Component: bootstrap-reset.less
+ ========================================================================== */
+a {
+  outline: none !important;
+}
+hr {
+  border-top: 1px solid #e1e1e1;
+}
+.page-header {
+  border-bottom-color: #e1e1e1;
+}
+.panel {
+  border: 1px solid #eee;
+  border-bottom: 1px solid #d1d2d3;
+}
+.panel .panel-heading a {
+  text-decoration: none !important;
+}
+.well {
+  border-bottom: 1px solid #d1d2d3;
+}
+.jumbotron {
+  border-bottom: 2px solid #d1d2d3;
+}
+.nav-tabs > li > a {
+  font-weight: bold;
+  color: #656565;
+  background-color: #f7f7f7;
+  margin: 0;
+  border: 1px solid #d1d2d3;
+  border-radius: 0;
+  padding: 10px 20px;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: inherit;
+  border-bottom-color: #fff;
+}
+.tab-content {
+  padding: 10px 20px 0px;
+  border-style: solid;
+  border-width: 0 1px 1px 1px;
+  border-color: #d1d2d3;
+}
+.nav-pills + .tab-content {
+  border: 0;
+  padding: 0;
+}
+.btn {
+  border-radius: 3px;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 -1px 0px rgba(0, 0, 0, 0.15) inset;
+  -webkit-appearance: none;
+  outline: none !important;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+.btn.btn-link {
+  box-shadow: none;
+  border: 0;
+}
+.btn-lg {
+  box-shadow: 0 -2px 0px rgba(0, 0, 0, 0.15) inset;
+}
+.form-control,
+.input-group-addon {
+  border-color: #dbd9d9;
+}
+.form-control {
+  box-shadow: 0 0 0 #000 !important;
+}
+.input-group-addon {
+  background-color: #f8f9fb;
+}
+fieldset {
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #eee;
+  margin-bottom: 20px;
+}
+fieldset.last-child,
+fieldset:last-child {
+  border-bottom: 0;
+}
+fieldset .form-group {
+  margin-bottom: 0;
+}
+.table > thead > tr > th {
+  border-bottom-width: 1px;
+}
+.table > tbody + tbody {
+  border-bottom-width: 1px;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  border-bottom-width: 1px;
+}
+.progress {
+  -webkit-box-shadow: 0 0 0 #000000;
+  box-shadow: 0 0 0 #000000;
+  border-radius: 3px;
+  border: 1px solid #f1f1f1;
+  background-color: #fff;
+}
+.progress .progress-bar {
+  -webkit-box-shadow: 0 0 0 #000000;
+  box-shadow: 0 0 0 #000000;
+}
+.popover {
+  box-shadow: 0 0 0 #000;
+  border-color: #eee;
+  border-bottom: 2px solid #e1e1e1;
+  border-radius: 3px;
+}
+.popover .popover-title {
+  border: 0;
+}
+.nav li > a {
+  background-color: transparent !important;
+}
+.nav.nav-pills .active > a {
+  background-color: #3498db !important;
+}
+.dropdown-menu {
+  border-radius: 3px;
+}
+.dropdown-header {
+  color: #a1a2a3;
+}
+.carousel .carousel-indicators {
+  bottom: 0;
+}
+.carousel .carousel-control.left,
+.carousel .carousel-control.right {
+  background-image: none;
+}
+.carousel .carousel-control em {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+/* ========================================================================
+   Component: button-extra.less
+ ========================================================================== */
+.btn-inverse {
+  color: #ffffff;
+  background-color: #2d2d2d;
+  border-color: #2d2d2d;
+}
+.btn-inverse:hover,
+.btn-inverse:focus,
+.btn-inverse:active,
+.btn-inverse.active,
+.open .dropdown-toggle.btn-inverse {
+  color: #ffffff;
+  background-color: #3c3c3c;
+}
+.btn-inverse:active,
+.btn-inverse.active,
+.open .dropdown-toggle.btn-inverse {
+  background-image: none;
+}
+.btn-inverse.disabled,
+.btn-inverse[disabled],
+fieldset[disabled] .btn-inverse,
+.btn-inverse.disabled:hover,
+.btn-inverse[disabled]:hover,
+fieldset[disabled] .btn-inverse:hover,
+.btn-inverse.disabled:focus,
+.btn-inverse[disabled]:focus,
+fieldset[disabled] .btn-inverse:focus,
+.btn-inverse.disabled:active,
+.btn-inverse[disabled]:active,
+fieldset[disabled] .btn-inverse:active,
+.btn-inverse.disabled.active,
+.btn-inverse[disabled].active,
+fieldset[disabled] .btn-inverse.active {
+  background-color: #2d2d2d;
+  border-color: #2d2d2d;
+}
+.btn-inverse .badge {
+  color: #2d2d2d;
+  background-color: #ffffff;
+}
+.btn-green {
+  color: #ffffff;
+  background-color: #01b6ad;
+  border-color: #019d95;
+}
+.btn-green:hover,
+.btn-green:focus,
+.btn-green:active,
+.btn-green.active,
+.open .dropdown-toggle.btn-green {
+  color: #ffffff;
+  background-color: #01d4ca;
+}
+.btn-green:active,
+.btn-green.active,
+.open .dropdown-toggle.btn-green {
+  background-image: none;
+}
+.btn-green.disabled,
+.btn-green[disabled],
+fieldset[disabled] .btn-green,
+.btn-green.disabled:hover,
+.btn-green[disabled]:hover,
+fieldset[disabled] .btn-green:hover,
+.btn-green.disabled:focus,
+.btn-green[disabled]:focus,
+fieldset[disabled] .btn-green:focus,
+.btn-green.disabled:active,
+.btn-green[disabled]:active,
+fieldset[disabled] .btn-green:active,
+.btn-green.disabled.active,
+.btn-green[disabled].active,
+fieldset[disabled] .btn-green.active {
+  background-color: #01b6ad;
+  border-color: #019d95;
+}
+.btn-green .badge {
+  color: #01b6ad;
+  background-color: #ffffff;
+}
+.btn-purple {
+  color: #ffffff;
+  background-color: #9b59b6;
+  border-color: #8f4bab;
+}
+.btn-purple:hover,
+.btn-purple:focus,
+.btn-purple:active,
+.btn-purple.active,
+.open .dropdown-toggle.btn-purple {
+  color: #ffffff;
+  background-color: #a86ebf;
+}
+.btn-purple:active,
+.btn-purple.active,
+.open .dropdown-toggle.btn-purple {
+  background-image: none;
+}
+.btn-purple.disabled,
+.btn-purple[disabled],
+fieldset[disabled] .btn-purple,
+.btn-purple.disabled:hover,
+.btn-purple[disabled]:hover,
+fieldset[disabled] .btn-purple:hover,
+.btn-purple.disabled:focus,
+.btn-purple[disabled]:focus,
+fieldset[disabled] .btn-purple:focus,
+.btn-purple.disabled:active,
+.btn-purple[disabled]:active,
+fieldset[disabled] .btn-purple:active,
+.btn-purple.disabled.active,
+.btn-purple[disabled].active,
+fieldset[disabled] .btn-purple.active {
+  background-color: #9b59b6;
+  border-color: #8f4bab;
+}
+.btn-purple .badge {
+  color: #9b59b6;
+  background-color: #ffffff;
+}
+.btn-pink {
+  color: #ffffff;
+  background-color: #ff3366;
+  border-color: #ff1953;
+}
+.btn-pink:hover,
+.btn-pink:focus,
+.btn-pink:active,
+.btn-pink.active,
+.open .dropdown-toggle.btn-pink {
+  color: #ffffff;
+  background-color: #ff527d;
+}
+.btn-pink:active,
+.btn-pink.active,
+.open .dropdown-toggle.btn-pink {
+  background-image: none;
+}
+.btn-pink.disabled,
+.btn-pink[disabled],
+fieldset[disabled] .btn-pink,
+.btn-pink.disabled:hover,
+.btn-pink[disabled]:hover,
+fieldset[disabled] .btn-pink:hover,
+.btn-pink.disabled:focus,
+.btn-pink[disabled]:focus,
+fieldset[disabled] .btn-pink:focus,
+.btn-pink.disabled:active,
+.btn-pink[disabled]:active,
+fieldset[disabled] .btn-pink:active,
+.btn-pink.disabled.active,
+.btn-pink[disabled].active,
+fieldset[disabled] .btn-pink.active {
+  background-color: #ff3366;
+  border-color: #ff1953;
+}
+.btn-pink .badge {
+  color: #ff3366;
+  background-color: #ffffff;
+}
+.btn-outline {
+  background-color: transparent;
+  border-color: #fff;
+}
+.btn-outline:hover,
+.btn-outline:focus {
+  background-color: #fff;
+  color: #3498db;
+}
+.btn-flat {
+  border-bottom-width: 1px;
+  border-radius: 0;
+  box-shadow: 0 0 0 #000;
+}
+.btn-xl {
+  padding: 20px 16px;
+  font-size: 18px;
+}
+.btn-square {
+  border-radius: 0;
+}
+.btn-pill-left,
+.btn-oval {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  padding-left: 18px;
+}
+.btn-pill-right,
+.btn-oval {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  padding-right: 18px;
+}
+.btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.btn-label {
+  position: relative;
+  background: transparent;
+  background: rgba(0, 0, 0, 0.05);
+  display: inline-block;
+  padding: 8px 14px;
+  left: -14px;
+  border-radius: 3px 0 0 3px;
+}
+.btn-label.btn-label-right {
+  left: auto;
+  right: -14px;
+  border-radius: 0 3px 3px 0;
+}
+.btn-lg .btn-label {
+  padding: 10px 16px;
+  left: -16px;
+  border-radius: 5px 0 0 5px;
+}
+.btn-lg .btn-label.btn-label-right {
+  left: auto;
+  right: -16px;
+  border-radius: 0 5px 5px 0;
+}
+.btn-sm .btn-label {
+  padding: 5px 10px;
+  left: -10px;
+  border-radius: 2px 0 0 2px;
+}
+.btn-sm .btn-label.btn-label-right {
+  left: auto;
+  right: -10px;
+  border-radius: 0 2px 2px 0;
+}
+.btn-xs .btn-label {
+  padding: 1px 5px;
+  left: -5px;
+  border-radius: 2px 0 0 2px;
+}
+.btn-xs .btn-label.btn-label-right {
+  left: auto;
+  right: -5px;
+  border-radius: 0 2px 2px 0;
+}
+.btn-fw {
+  min-width: 80px;
+}
+.btn-fw.btn-sm {
+  min-width: 40px;
+}
+.btn-fw.btn-md {
+  min-width: 60px;
+}
+.btn-fw.btn-lg {
+  min-width: 140px;
+}
+body {
+  background-color: #f0f0f0;
+}
+body > section,
+body > footer {
+  padding: 80px 0;
+}
+header {
+  min-height: 100%;
+  padding-bottom: 60px;
+  text-align: center;
+  background-image: url('../img/landing/background.jpg');
+  background-repeat: no-repeat;
+  background-color: #fff;
+  background-attachment: fixed;
+}
+header > .container {
+  height: 100%;
+}
+header nav {
+  padding: 40px 0 20px;
+}
+header .app-logo,
+header .app-buttons {
+  text-align: center;
+  margin-bottom: 30px;
+}
+@media only screen and (min-width: 992px) {
+  header {
+    background-size: 100% 100%;
+    height: 100%;
+    padding-bottom: 0;
+  }
+  header .app-logo {
+    text-align: left;
+    margin-bottom: 0;
+  }
+  header .app-buttons {
+    text-align: right;
+  }
+}
+.header-content {
+  height: 80%;
+  color: #fff;
+}
+.header-content .row-table,
+.header-content .row-table > [class*="col-"] {
+  display: block;
+}
+@media only screen and (min-width: 992px) {
+  .header-content {
+    color: #888;
+  }
+  .header-content .row-table {
+    display: table;
+  }
+  .header-content .row-table > [class*="col-"] {
+    display: table-cell;
+  }
+  .header-content .browser-presentation {
+    margin-right: -12%;
+    box-shadow: -20px 30px 20px rgba(0, 0, 0, 0.25);
+  }
+  .header-content .side-presentation {
+    text-align: left;
+    padding-left: 15%;
+  }
+}
+.logo-wrapper {
+  display: inline-block;
+  max-width: 90px;
+  height: auto;
+  border: 2px solid #fff;
+  padding: 10px 8px 8px;
+  border-radius: 3px;
+}
+.store-list {
+  margin: 80px 0;
+}
+.store-list > li {
+  max-width: 140px;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+#clients img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+#testimonial .carousel {
+  min-height: 200px;
+}
+#testimonial .carousel .item {
+  text-align: center;
+  margin: 0 auto;
+}
+#testimonial .carousel .item > .row {
+  margin-bottom: 50px;
+}
+#testimonial .carousel .item h4 {
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.4;
+}
+#callout {
+  background-image: url('../img/landing/callout.jpg');
+  background-repeat: no-repeat;
+  background-color: #fff;
+  background-attachment: fixed;
+}
+@media only screen and (min-width: 992px) {
+  #callout {
+    background-size: 100% auto;
+  }
+}
+.feature-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.feature-list > li {
+  margin-bottom: 30px;
+}
+.feature-list > li:last-child {
+  margin-bottom: 0;
+}
+@media only screen and (min-width: 992px) {
+  .feature-list > li {
+    margin-bottom: 70px;
+  }
+}
+.feature-list .point {
+  margin-bottom: 1px;
+}
+.footer-1 form > h5,
+.footer-1 nav > h5 {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+.footer-1 nav > ul > li > a {
+  color: #989898;
+}
+.footer-1 nav > ul > li > a:hover,
+.footer-1 nav > ul > li > a:focus {
+  color: #fff;
+  text-decoration: none;
+}
+.footer-2 {
+  padding-top: 0 !important;
+  padding-bottom: 30px;
+  background-color: #333;
+  text-align: center;
+}
+.footer-2 a {
+  color: #989898;
+}
+.footer-2 p {
+  margin: 0;
+}
+.footer-2 [class*="col-"] {
+  padding-top: 30px;
+}
+.footer-2 .logo-column {
+  text-align: center;
+  padding-top: 30px;
+}
+@media only screen and (min-width: 992px) {
+  .footer-2 {
+    text-align: left;
+  }
+}

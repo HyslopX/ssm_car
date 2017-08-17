@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sailing.dao.FavMapper">
+  <resultMap id="BaseResultMap" type="com.sailing.entity.FavKey">
+    <id column="uid" jdbcType="VARCHAR" property="uid" />
+    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    car_id, `uid`
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="com.sailing.entity.FavKey">
+    delete from fav
+    where `uid` = #{uid,jdbcType=VARCHAR}
+      and car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <select id="selectByUid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from fav
+    where uid = #{uid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByCarId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from fav
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.sailing.entity.FavKey">
+    insert into fav (`uid`, car_id)
+    values (#{uid,jdbcType=VARCHAR}, #{carId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sailing.entity.FavKey">
+    insert into fav
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        `uid`,
+      </if>
+      <if test="carId != null">
+        car_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

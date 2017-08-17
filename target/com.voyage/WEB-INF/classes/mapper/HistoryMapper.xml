@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sailing.dao.HistoryMapper">
+  <resultMap id="BaseResultMap" type="com.sailing.entity.History">
+    <id column="history_id" jdbcType="VARCHAR" property="historyId" />
+    <result column="buyer_id" jdbcType="VARCHAR" property="buyerId" />
+    <result column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="seller_id" jdbcType="VARCHAR" property="sellerId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    history_id, buyer_id, car_id, seller_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from history_order
+    where history_id = #{historyId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectHistoryAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from history_order
+  </select>
+  <select id="selectByBuyerId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from history_order
+    where buyer_id = #{buyerId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectBySellerId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from history_order
+    where seller_id = #{sellerId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from history_order
+    where history_id = #{historyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sailing.entity.History">
+    insert into history_order (history_id, buyer_id, car_id, 
+      seller_id)
+    values (#{historyId,jdbcType=VARCHAR}, #{buyerId,jdbcType=VARCHAR}, #{carId,jdbcType=VARCHAR}, 
+      #{sellerId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sailing.entity.History">
+    insert into history_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="historyId != null">
+        history_id,
+      </if>
+      <if test="buyerId != null">
+        buyer_id,
+      </if>
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="sellerId != null">
+        seller_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="historyId != null">
+        #{historyId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null">
+        #{buyerId,jdbcType=VARCHAR},
+      </if>
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null">
+        #{sellerId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sailing.entity.History">
+    update history_order
+    <set>
+      <if test="buyerId != null">
+        buyer_id = #{buyerId,jdbcType=VARCHAR},
+      </if>
+      <if test="carId != null">
+        car_id = #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null">
+        seller_id = #{sellerId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where history_id = #{historyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sailing.entity.History">
+    update history_order
+    set buyer_id = #{buyerId,jdbcType=VARCHAR},
+      car_id = #{carId,jdbcType=VARCHAR},
+      seller_id = #{sellerId,jdbcType=VARCHAR}
+    where history_id = #{historyId,jdbcType=VARCHAR}
+  </update>
+</mapper>

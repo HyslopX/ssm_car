@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sailing.dao.CarInfoMapper">
+  <resultMap id="BaseResultMap" type="com.sailing.entity.CarInfo">
+    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="brand" jdbcType="VARCHAR" property="brand" />
+    <result column="car_name" jdbcType="VARCHAR" property="carName" />
+    <result column="conf_name" jdbcType="VARCHAR" property="confName" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="engine" jdbcType="VARCHAR" property="engine" />
+    <result column="gearbox" jdbcType="VARCHAR" property="gearbox" />
+    <result column="body_structure" jdbcType="VARCHAR" property="bodyStructure" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="maximumspeed" jdbcType="VARCHAR" property="maximumspeed" />
+    <result column="cargo_volume" jdbcType="VARCHAR" property="cargoVolume" />
+    <result column="car_age" jdbcType="DOUBLE" property="carAge" />
+    <result column="car_mileage" jdbcType="DOUBLE" property="carMileage" />
+    <result column="car_damage" jdbcType="VARCHAR" property="carDamage" />
+    <result column="iseager" jdbcType="VARCHAR" property="iseager" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="license_address" jdbcType="VARCHAR" property="licenseAddress" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="islocked" jdbcType="VARCHAR" property="islocked" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    car_id, brand, car_name, conf_name, `level`, engine, gearbox, body_structure, `size`, 
+    maximumspeed, cargo_volume, car_age, car_mileage, car_damage, iseager, price, license_address, 
+    address, islocked, `uid`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectCarInfoAll"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from car_info
+  </select>
+  <select id="selectByUid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from car_info
+    where uid = #{uid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from car_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sailing.entity.CarInfo">
+    insert into car_info (car_id, brand, car_name, 
+      conf_name, `level`, engine, 
+      gearbox, body_structure, `size`, 
+      maximumspeed, cargo_volume, car_age, 
+      car_mileage, car_damage, iseager, 
+      price, license_address, address, 
+      islocked, `uid`)
+    values (#{carId,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, #{carName,jdbcType=VARCHAR}, 
+      #{confName,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, #{engine,jdbcType=VARCHAR}, 
+      #{gearbox,jdbcType=VARCHAR}, #{bodyStructure,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR}, 
+      #{maximumspeed,jdbcType=VARCHAR}, #{cargoVolume,jdbcType=VARCHAR}, #{carAge,jdbcType=DOUBLE}, 
+      #{carMileage,jdbcType=DOUBLE}, #{carDamage,jdbcType=VARCHAR}, #{iseager,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DOUBLE}, #{licenseAddress,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{islocked,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sailing.entity.CarInfo">
+    insert into car_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="brand != null">
+        brand,
+      </if>
+      <if test="carName != null">
+        car_name,
+      </if>
+      <if test="confName != null">
+        conf_name,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="engine != null">
+        engine,
+      </if>
+      <if test="gearbox != null">
+        gearbox,
+      </if>
+      <if test="bodyStructure != null">
+        body_structure,
+      </if>
+      <if test="size != null">
+        `size`,
+      </if>
+      <if test="maximumspeed != null">
+        maximumspeed,
+      </if>
+      <if test="cargoVolume != null">
+        cargo_volume,
+      </if>
+      <if test="carAge != null">
+        car_age,
+      </if>
+      <if test="carMileage != null">
+        car_mileage,
+      </if>
+      <if test="carDamage != null">
+        car_damage,
+      </if>
+      <if test="iseager != null">
+        iseager,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="licenseAddress != null">
+        license_address,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="islocked != null">
+        islocked,
+      </if>
+      <if test="uid != null">
+        `uid`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="carName != null">
+        #{carName,jdbcType=VARCHAR},
+      </if>
+      <if test="confName != null">
+        #{confName,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="engine != null">
+        #{engine,jdbcType=VARCHAR},
+      </if>
+      <if test="gearbox != null">
+        #{gearbox,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyStructure != null">
+        #{bodyStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="maximumspeed != null">
+        #{maximumspeed,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoVolume != null">
+        #{cargoVolume,jdbcType=VARCHAR},
+      </if>
+      <if test="carAge != null">
+        #{carAge,jdbcType=DOUBLE},
+      </if>
+      <if test="carMileage != null">
+        #{carMileage,jdbcType=DOUBLE},
+      </if>
+      <if test="carDamage != null">
+        #{carDamage,jdbcType=VARCHAR},
+      </if>
+      <if test="iseager != null">
+        #{iseager,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="licenseAddress != null">
+        #{licenseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="islocked != null">
+        #{islocked,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sailing.entity.CarInfo">
+    update car_info
+    <set>
+      <if test="brand != null">
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="carName != null">
+        car_name = #{carName,jdbcType=VARCHAR},
+      </if>
+      <if test="confName != null">
+        conf_name = #{confName,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="engine != null">
+        engine = #{engine,jdbcType=VARCHAR},
+      </if>
+      <if test="gearbox != null">
+        gearbox = #{gearbox,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyStructure != null">
+        body_structure = #{bodyStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        `size` = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="maximumspeed != null">
+        maximumspeed = #{maximumspeed,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoVolume != null">
+        cargo_volume = #{cargoVolume,jdbcType=VARCHAR},
+      </if>
+      <if test="carAge != null">
+        car_age = #{carAge,jdbcType=DOUBLE},
+      </if>
+      <if test="carMileage != null">
+        car_mileage = #{carMileage,jdbcType=DOUBLE},
+      </if>
+      <if test="carDamage != null">
+        car_damage = #{carDamage,jdbcType=VARCHAR},
+      </if>
+      <if test="iseager != null">
+        iseager = #{iseager,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="licenseAddress != null">
+        license_address = #{licenseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="islocked != null">
+        islocked = #{islocked,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        `uid` = #{uid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sailing.entity.CarInfo">
+    update car_info
+    set brand = #{brand,jdbcType=VARCHAR},
+      car_name = #{carName,jdbcType=VARCHAR},
+      conf_name = #{confName,jdbcType=VARCHAR},
+      `level` = #{level,jdbcType=VARCHAR},
+      engine = #{engine,jdbcType=VARCHAR},
+      gearbox = #{gearbox,jdbcType=VARCHAR},
+      body_structure = #{bodyStructure,jdbcType=VARCHAR},
+      `size` = #{size,jdbcType=VARCHAR},
+      maximumspeed = #{maximumspeed,jdbcType=VARCHAR},
+      cargo_volume = #{cargoVolume,jdbcType=VARCHAR},
+      car_age = #{carAge,jdbcType=DOUBLE},
+      car_mileage = #{carMileage,jdbcType=DOUBLE},
+      car_damage = #{carDamage,jdbcType=VARCHAR},
+      iseager = #{iseager,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      license_address = #{licenseAddress,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      islocked = #{islocked,jdbcType=VARCHAR},
+      `uid` = #{uid,jdbcType=VARCHAR}
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+</mapper>

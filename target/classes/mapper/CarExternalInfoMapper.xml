@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sailing.dao.CarExternalInfoMapper">
+  <resultMap id="BaseResultMap" type="com.sailing.entity.CarExternalInfo">
+    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="electronic_sunroof" jdbcType="VARCHAR" property="electronicSunroof" />
+    <result column="panoramic_sunroof" jdbcType="VARCHAR" property="panoramicSunroof" />
+    <result column="electronic_door_pull" jdbcType="VARCHAR" property="electronicDoorPull" />
+    <result column="electronic_trunk" jdbcType="VARCHAR" property="electronicTrunk" />
+    <result column="rain_sensing_wipers" jdbcType="VARCHAR" property="rainSensingWipers" />
+    <result column="rear_wiper" jdbcType="VARCHAR" property="rearWiper" />
+    <result column="power_window" jdbcType="VARCHAR" property="powerWindow" />
+    <result column="electronic_rearview_mirror" jdbcType="VARCHAR" property="electronicRearviewMirror" />
+    <result column="rearview_mirror_heating" jdbcType="VARCHAR" property="rearviewMirrorHeating" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    car_id, electronic_sunroof, panoramic_sunroof, electronic_door_pull, electronic_trunk, 
+    rain_sensing_wipers, rear_wiper, power_window, electronic_rearview_mirror, rearview_mirror_heating
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_external_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from car_external_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sailing.entity.CarExternalInfo">
+    insert into car_external_info (car_id, electronic_sunroof, panoramic_sunroof, 
+      electronic_door_pull, electronic_trunk, rain_sensing_wipers, 
+      rear_wiper, power_window, electronic_rearview_mirror, 
+      rearview_mirror_heating)
+    values (#{carId,jdbcType=VARCHAR}, #{electronicSunroof,jdbcType=VARCHAR}, #{panoramicSunroof,jdbcType=VARCHAR}, 
+      #{electronicDoorPull,jdbcType=VARCHAR}, #{electronicTrunk,jdbcType=VARCHAR}, #{rainSensingWipers,jdbcType=VARCHAR}, 
+      #{rearWiper,jdbcType=VARCHAR}, #{powerWindow,jdbcType=VARCHAR}, #{electronicRearviewMirror,jdbcType=VARCHAR}, 
+      #{rearviewMirrorHeating,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sailing.entity.CarExternalInfo">
+    insert into car_external_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="electronicSunroof != null">
+        electronic_sunroof,
+      </if>
+      <if test="panoramicSunroof != null">
+        panoramic_sunroof,
+      </if>
+      <if test="electronicDoorPull != null">
+        electronic_door_pull,
+      </if>
+      <if test="electronicTrunk != null">
+        electronic_trunk,
+      </if>
+      <if test="rainSensingWipers != null">
+        rain_sensing_wipers,
+      </if>
+      <if test="rearWiper != null">
+        rear_wiper,
+      </if>
+      <if test="powerWindow != null">
+        power_window,
+      </if>
+      <if test="electronicRearviewMirror != null">
+        electronic_rearview_mirror,
+      </if>
+      <if test="rearviewMirrorHeating != null">
+        rearview_mirror_heating,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicSunroof != null">
+        #{electronicSunroof,jdbcType=VARCHAR},
+      </if>
+      <if test="panoramicSunroof != null">
+        #{panoramicSunroof,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicDoorPull != null">
+        #{electronicDoorPull,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicTrunk != null">
+        #{electronicTrunk,jdbcType=VARCHAR},
+      </if>
+      <if test="rainSensingWipers != null">
+        #{rainSensingWipers,jdbcType=VARCHAR},
+      </if>
+      <if test="rearWiper != null">
+        #{rearWiper,jdbcType=VARCHAR},
+      </if>
+      <if test="powerWindow != null">
+        #{powerWindow,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicRearviewMirror != null">
+        #{electronicRearviewMirror,jdbcType=VARCHAR},
+      </if>
+      <if test="rearviewMirrorHeating != null">
+        #{rearviewMirrorHeating,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sailing.entity.CarExternalInfo">
+    update car_external_info
+    <set>
+      <if test="electronicSunroof != null">
+        electronic_sunroof = #{electronicSunroof,jdbcType=VARCHAR},
+      </if>
+      <if test="panoramicSunroof != null">
+        panoramic_sunroof = #{panoramicSunroof,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicDoorPull != null">
+        electronic_door_pull = #{electronicDoorPull,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicTrunk != null">
+        electronic_trunk = #{electronicTrunk,jdbcType=VARCHAR},
+      </if>
+      <if test="rainSensingWipers != null">
+        rain_sensing_wipers = #{rainSensingWipers,jdbcType=VARCHAR},
+      </if>
+      <if test="rearWiper != null">
+        rear_wiper = #{rearWiper,jdbcType=VARCHAR},
+      </if>
+      <if test="powerWindow != null">
+        power_window = #{powerWindow,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicRearviewMirror != null">
+        electronic_rearview_mirror = #{electronicRearviewMirror,jdbcType=VARCHAR},
+      </if>
+      <if test="rearviewMirrorHeating != null">
+        rearview_mirror_heating = #{rearviewMirrorHeating,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sailing.entity.CarExternalInfo">
+    update car_external_info
+    set electronic_sunroof = #{electronicSunroof,jdbcType=VARCHAR},
+      panoramic_sunroof = #{panoramicSunroof,jdbcType=VARCHAR},
+      electronic_door_pull = #{electronicDoorPull,jdbcType=VARCHAR},
+      electronic_trunk = #{electronicTrunk,jdbcType=VARCHAR},
+      rain_sensing_wipers = #{rainSensingWipers,jdbcType=VARCHAR},
+      rear_wiper = #{rearWiper,jdbcType=VARCHAR},
+      power_window = #{powerWindow,jdbcType=VARCHAR},
+      electronic_rearview_mirror = #{electronicRearviewMirror,jdbcType=VARCHAR},
+      rearview_mirror_heating = #{rearviewMirrorHeating,jdbcType=VARCHAR}
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+</mapper>

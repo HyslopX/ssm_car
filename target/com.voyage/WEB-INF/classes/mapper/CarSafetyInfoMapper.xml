@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sailing.dao.CarSafetyInfoMapper">
+  <resultMap id="BaseResultMap" type="com.sailing.entity.CarSafetyInfo">
+    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="front_airbag" jdbcType="VARCHAR" property="frontAirbag" />
+    <result column="head_airbag" jdbcType="VARCHAR" property="headAirbag" />
+    <result column="child_seat_int" jdbcType="VARCHAR" property="childSeatInt" />
+    <result column="tpms" jdbcType="VARCHAR" property="tpms" />
+    <result column="car_lock" jdbcType="VARCHAR" property="carLock" />
+    <result column="abs" jdbcType="VARCHAR" property="abs" />
+    <result column="usc" jdbcType="VARCHAR" property="usc" />
+    <result column="pss" jdbcType="VARCHAR" property="pss" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    car_id, front_airbag, head_airbag, child_seat_int, tpms, car_lock, `abs`, usc, pss
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_safety_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from car_safety_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sailing.entity.CarSafetyInfo">
+    insert into car_safety_info (car_id, front_airbag, head_airbag, 
+      child_seat_int, tpms, car_lock, 
+      `abs`, usc, pss)
+    values (#{carId,jdbcType=VARCHAR}, #{frontAirbag,jdbcType=VARCHAR}, #{headAirbag,jdbcType=VARCHAR}, 
+      #{childSeatInt,jdbcType=VARCHAR}, #{tpms,jdbcType=VARCHAR}, #{carLock,jdbcType=VARCHAR}, 
+      #{abs,jdbcType=VARCHAR}, #{usc,jdbcType=VARCHAR}, #{pss,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sailing.entity.CarSafetyInfo">
+    insert into car_safety_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="frontAirbag != null">
+        front_airbag,
+      </if>
+      <if test="headAirbag != null">
+        head_airbag,
+      </if>
+      <if test="childSeatInt != null">
+        child_seat_int,
+      </if>
+      <if test="tpms != null">
+        tpms,
+      </if>
+      <if test="carLock != null">
+        car_lock,
+      </if>
+      <if test="abs != null">
+        `abs`,
+      </if>
+      <if test="usc != null">
+        usc,
+      </if>
+      <if test="pss != null">
+        pss,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="frontAirbag != null">
+        #{frontAirbag,jdbcType=VARCHAR},
+      </if>
+      <if test="headAirbag != null">
+        #{headAirbag,jdbcType=VARCHAR},
+      </if>
+      <if test="childSeatInt != null">
+        #{childSeatInt,jdbcType=VARCHAR},
+      </if>
+      <if test="tpms != null">
+        #{tpms,jdbcType=VARCHAR},
+      </if>
+      <if test="carLock != null">
+        #{carLock,jdbcType=VARCHAR},
+      </if>
+      <if test="abs != null">
+        #{abs,jdbcType=VARCHAR},
+      </if>
+      <if test="usc != null">
+        #{usc,jdbcType=VARCHAR},
+      </if>
+      <if test="pss != null">
+        #{pss,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sailing.entity.CarSafetyInfo">
+    update car_safety_info
+    <set>
+      <if test="frontAirbag != null">
+        front_airbag = #{frontAirbag,jdbcType=VARCHAR},
+      </if>
+      <if test="headAirbag != null">
+        head_airbag = #{headAirbag,jdbcType=VARCHAR},
+      </if>
+      <if test="childSeatInt != null">
+        child_seat_int = #{childSeatInt,jdbcType=VARCHAR},
+      </if>
+      <if test="tpms != null">
+        tpms = #{tpms,jdbcType=VARCHAR},
+      </if>
+      <if test="carLock != null">
+        car_lock = #{carLock,jdbcType=VARCHAR},
+      </if>
+      <if test="abs != null">
+        `abs` = #{abs,jdbcType=VARCHAR},
+      </if>
+      <if test="usc != null">
+        usc = #{usc,jdbcType=VARCHAR},
+      </if>
+      <if test="pss != null">
+        pss = #{pss,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sailing.entity.CarSafetyInfo">
+    update car_safety_info
+    set front_airbag = #{frontAirbag,jdbcType=VARCHAR},
+      head_airbag = #{headAirbag,jdbcType=VARCHAR},
+      child_seat_int = #{childSeatInt,jdbcType=VARCHAR},
+      tpms = #{tpms,jdbcType=VARCHAR},
+      car_lock = #{carLock,jdbcType=VARCHAR},
+      `abs` = #{abs,jdbcType=VARCHAR},
+      usc = #{usc,jdbcType=VARCHAR},
+      pss = #{pss,jdbcType=VARCHAR}
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+</mapper>

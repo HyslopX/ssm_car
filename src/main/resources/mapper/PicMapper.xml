@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sailing.dao.PicMapper">
+  <resultMap id="BaseResultMap" type="com.sailing.entity.Pic">
+    <id column="pic_id" jdbcType="VARCHAR" property="picId" />
+    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pic_id, car_id, pic_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.sailing.entity.PicKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pic
+    where pic_id = #{picId,jdbcType=VARCHAR}
+      and car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByCarId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from pic
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.sailing.entity.PicKey">
+    delete from pic
+    where pic_id = #{picId,jdbcType=VARCHAR}
+      and car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sailing.entity.Pic">
+    insert into pic (pic_id, car_id, pic_url
+      )
+    values (#{picId,jdbcType=VARCHAR}, #{carId,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sailing.entity.Pic">
+    insert into pic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="picId != null">
+        pic_id,
+      </if>
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="picUrl != null">
+        pic_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="picId != null">
+        #{picId,jdbcType=VARCHAR},
+      </if>
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null">
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sailing.entity.Pic">
+    update pic
+    <set>
+      <if test="picUrl != null">
+        pic_url = #{picUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pic_id = #{picId,jdbcType=VARCHAR}
+      and car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sailing.entity.Pic">
+    update pic
+    set pic_url = #{picUrl,jdbcType=VARCHAR}
+    where pic_id = #{picId,jdbcType=VARCHAR}
+      and car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+</mapper>

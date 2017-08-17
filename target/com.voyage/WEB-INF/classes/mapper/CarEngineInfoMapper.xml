@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sailing.dao.CarEngineInfoMapper">
+  <resultMap id="BaseResultMap" type="com.sailing.entity.CarEngineInfo">
+    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="displacement" jdbcType="DOUBLE" property="displacement" />
+    <result column="intake_form" jdbcType="VARCHAR" property="intakeForm" />
+    <result column="cylinder_arrangement" jdbcType="VARCHAR" property="cylinderArrangement" />
+    <result column="cylinders" jdbcType="VARCHAR" property="cylinders" />
+    <result column="maximum_horsepower" jdbcType="VARCHAR" property="maximumHorsepower" />
+    <result column="fuel" jdbcType="VARCHAR" property="fuel" />
+    <result column="fuel_label" jdbcType="VARCHAR" property="fuelLabel" />
+    <result column="oilsupply_mode" jdbcType="VARCHAR" property="oilsupplyMode" />
+    <result column="enviroment_standard" jdbcType="VARCHAR" property="enviromentStandard" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    car_id, displacement, intake_form, cylinder_arrangement, cylinders, maximum_horsepower, 
+    fuel, fuel_label, oilsupply_mode, enviroment_standard
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_engine_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from car_engine_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sailing.entity.CarEngineInfo">
+    insert into car_engine_info (car_id, displacement, intake_form, 
+      cylinder_arrangement, cylinders, maximum_horsepower, 
+      fuel, fuel_label, oilsupply_mode, 
+      enviroment_standard)
+    values (#{carId,jdbcType=VARCHAR}, #{displacement,jdbcType=DOUBLE}, #{intakeForm,jdbcType=VARCHAR}, 
+      #{cylinderArrangement,jdbcType=VARCHAR}, #{cylinders,jdbcType=VARCHAR}, #{maximumHorsepower,jdbcType=VARCHAR}, 
+      #{fuel,jdbcType=VARCHAR}, #{fuelLabel,jdbcType=VARCHAR}, #{oilsupplyMode,jdbcType=VARCHAR}, 
+      #{enviromentStandard,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sailing.entity.CarEngineInfo">
+    insert into car_engine_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="displacement != null">
+        displacement,
+      </if>
+      <if test="intakeForm != null">
+        intake_form,
+      </if>
+      <if test="cylinderArrangement != null">
+        cylinder_arrangement,
+      </if>
+      <if test="cylinders != null">
+        cylinders,
+      </if>
+      <if test="maximumHorsepower != null">
+        maximum_horsepower,
+      </if>
+      <if test="fuel != null">
+        fuel,
+      </if>
+      <if test="fuelLabel != null">
+        fuel_label,
+      </if>
+      <if test="oilsupplyMode != null">
+        oilsupply_mode,
+      </if>
+      <if test="enviromentStandard != null">
+        enviroment_standard,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="displacement != null">
+        #{displacement,jdbcType=DOUBLE},
+      </if>
+      <if test="intakeForm != null">
+        #{intakeForm,jdbcType=VARCHAR},
+      </if>
+      <if test="cylinderArrangement != null">
+        #{cylinderArrangement,jdbcType=VARCHAR},
+      </if>
+      <if test="cylinders != null">
+        #{cylinders,jdbcType=VARCHAR},
+      </if>
+      <if test="maximumHorsepower != null">
+        #{maximumHorsepower,jdbcType=VARCHAR},
+      </if>
+      <if test="fuel != null">
+        #{fuel,jdbcType=VARCHAR},
+      </if>
+      <if test="fuelLabel != null">
+        #{fuelLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="oilsupplyMode != null">
+        #{oilsupplyMode,jdbcType=VARCHAR},
+      </if>
+      <if test="enviromentStandard != null">
+        #{enviromentStandard,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sailing.entity.CarEngineInfo">
+    update car_engine_info
+    <set>
+      <if test="displacement != null">
+        displacement = #{displacement,jdbcType=DOUBLE},
+      </if>
+      <if test="intakeForm != null">
+        intake_form = #{intakeForm,jdbcType=VARCHAR},
+      </if>
+      <if test="cylinderArrangement != null">
+        cylinder_arrangement = #{cylinderArrangement,jdbcType=VARCHAR},
+      </if>
+      <if test="cylinders != null">
+        cylinders = #{cylinders,jdbcType=VARCHAR},
+      </if>
+      <if test="maximumHorsepower != null">
+        maximum_horsepower = #{maximumHorsepower,jdbcType=VARCHAR},
+      </if>
+      <if test="fuel != null">
+        fuel = #{fuel,jdbcType=VARCHAR},
+      </if>
+      <if test="fuelLabel != null">
+        fuel_label = #{fuelLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="oilsupplyMode != null">
+        oilsupply_mode = #{oilsupplyMode,jdbcType=VARCHAR},
+      </if>
+      <if test="enviromentStandard != null">
+        enviroment_standard = #{enviromentStandard,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sailing.entity.CarEngineInfo">
+    update car_engine_info
+    set displacement = #{displacement,jdbcType=DOUBLE},
+      intake_form = #{intakeForm,jdbcType=VARCHAR},
+      cylinder_arrangement = #{cylinderArrangement,jdbcType=VARCHAR},
+      cylinders = #{cylinders,jdbcType=VARCHAR},
+      maximum_horsepower = #{maximumHorsepower,jdbcType=VARCHAR},
+      fuel = #{fuel,jdbcType=VARCHAR},
+      fuel_label = #{fuelLabel,jdbcType=VARCHAR},
+      oilsupply_mode = #{oilsupplyMode,jdbcType=VARCHAR},
+      enviroment_standard = #{enviromentStandard,jdbcType=VARCHAR}
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+</mapper>
